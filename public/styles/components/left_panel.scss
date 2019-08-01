@@ -1,0 +1,53 @@
+.left_panel{
+  direction: rtl;
+  min-height: 90vh;
+  .list_header{
+    direction: rtl;
+    text-align: right;
+  }
+  .add_new{
+    cursor: pointer;
+    display: inline-block;
+    i{
+      font-size: 30px;
+    }
+    &.hidden{
+      display: none;
+    }
+  }
+  .list {
+    direction: rtl;
+    list-style: none;
+    .one_questination {
+      direction: rtl;
+      text-align: right;
+      font-size: 1vw;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: solid 1px #eeeeee;
+      min-height: 5.3vh;
+.q_text{
+  cursor: pointer;
+}
+    .controls {
+      display: flex;
+      margin-right: 1vw;
+
+      .edit_icon {
+        display: inline-block;
+        //transform: rotate(45deg);
+        float: left;
+        cursor: pointer;
+      }
+      .delete_icon {
+        display: inline-block;
+        //float: left;
+        cursor: pointer;
+
+      }
+    }
+  }
+  }
+}

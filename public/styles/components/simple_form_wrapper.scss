@@ -1,0 +1,34 @@
+.simple_forms_wrapper {
+  padding: 1vh 1vw 2vh;
+  margin-top: 2vh;
+  border: solid 1px #ebebeb;
+  .heading{
+    text-align: right;
+  }
+  .simple_forms_wrapper_body {
+
+    .one_simple_form_container {
+      border: solid 1px #ebebeb;
+      padding: 1vh;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      background-color: #fff;
+      &:last-child{
+        margin-bottom: 0;
+      }
+     .form_container_header{
+       .controls{
+         span{
+           height: 24px;
+           display: inline-block;
+           cursor: pointer;
+           //i{
+           //  display: block;
+           //
+           //}
+         }
+       }
+     }
+    }
+  }
+}

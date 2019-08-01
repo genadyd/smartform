@@ -1,0 +1,21 @@
+#simple_form_processing_pop{
+  .modal-header{
+    display:block;
+    .close{
+      float:left;
+    }
+    label{
+      float: right;
+    }
+    .processing_controls{
+      .controls_bar{
+          span{
+            font-size: 1vw;
+            margin: 0 1vw;
+            cursor: pointer;
+          }
+
+      }
+    }
+  }
+}

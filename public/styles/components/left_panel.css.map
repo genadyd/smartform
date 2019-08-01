@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAW;EACT,SAAS,EAAE,GAAG;EACd,MAAM,EAAE,IAAI",
+"sources": ["left_panel.scss"],
+"names": [],
+"file": "left_panel.css"
+}

@@ -1,0 +1,85 @@
+.form_processing_container{
+  margin-top: 2vh;
+  padding-bottom: 5vh;
+  .hidden{display: none}
+  .container_header{
+    .controls_bar{
+      .add_quest{
+        //font-size:1.3vw;
+        cursor:pointer;
+        &.hidden{
+          display: none;
+      }
+
+      }
+    }
+  }
+  .form_processing_container_body{
+
+    .question_show_container{
+      width: 100%;
+      position: relative;
+      padding-top: 1em;
+      .question_answer_box{
+        width: 100%;
+        .question_answer_header{
+          width: 100%;
+          justify-content: space-between;
+          padding: .3vh 4%;
+          align-items: center;
+          .question_controls{
+            display: block;
+            height: 100%;
+            span{
+              display: inline-block;
+              cursor: pointer;
+              width: 2vw;
+              text-align: center;
+              position: relative;
+              i{
+                position: relative;
+                line-height: 1.2;
+                //top: 50%;
+              }
+            }
+          }
+        }
+        .question_answer_body{
+           .one_answer_show_box{
+             margin-top: 1vh;
+             .one_answer_header{
+               justify-content: space-between;
+               padding: 0 1vw;
+               align-items: center;
+               .one_answer_controls{
+                 span{
+                   display: inline-block;
+                   cursor: pointer;
+                   text-align: center;
+                   position: relative;
+                   height: 26px;
+                   width: 26px;
+                   border-radius: 13px;
+                   i{
+                     position: relative;
+                     line-height: 1.2;
+                     font-size: 20px;
+                     //top: 50%;
+                   }
+                   &.open_close_question_box.open{
+                    i{
+                      transform: rotate(-90deg);
+                    }
+                 }
+                 }
+               }
+             }
+           }
+        }
+      }
+      .one_answer_body{
+        padding: 0 0 0 2%;
+      }
+    }
+  }
+}

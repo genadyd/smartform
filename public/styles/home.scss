@@ -1,0 +1,11 @@
+body{
+ direction: rtl;
+  .page_container{
+    padding: 1vh 0 0 0;
+    @import "components/left_panel";
+    @import "components/form_processing_pop";
+    @import "components/form_processing_container";
+    @import "components/simple_form_wrapper";
+    @import "components/simple_form_processing_container";
+  }
+}

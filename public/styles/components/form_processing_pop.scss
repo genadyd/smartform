@@ -1,0 +1,22 @@
+#form_processing_pop{
+  .modal-header{
+    display:block;
+    .close{
+      float:left;
+    }
+    label{
+      float: right;
+    }
+    .processing_controls{
+     .controls_bar{
+       .types_list{
+           .inputs_type{
+             font-size: 1vw;
+             margin: 0 1vw;
+             cursor: pointer;
+           }
+       }
+     }
+    }
+  }
+}
