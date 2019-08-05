@@ -16,9 +16,13 @@
                             types:
                         </span>
                         <span class="types_list">
-                            <?php foreach($page_data['inputs_types'] as $type): ?>
-                                    <span class="text-info inputs_type" crypt="<?= $type['crypt'] ?>"><?= $type['element_title'] ?></span>
-                            <?php endforeach; ?>
+                            <?php foreach($page_data['inputs_types'] as $type):
+    if($type['type'] == 'radio'):?>
+
+                                    <button class="btn btn-outline-success inputs_type" crypt="<?= $type['crypt'] ?>"><?= $type['element_title'] ?></button>
+                            <?php
+                            endif;
+                            endforeach; ?>
                         </span>
                     </nav>
                 </div>

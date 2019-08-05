@@ -20,15 +20,18 @@
                 </div>
                 <div class="processing_controls">
                     <nav class="controls_bar navbar navbar-light bg-light container">
-                        <span class="add_field text-success" t="email">
+                        <button class="add_field btn btn-outline-success" t="email">
                            email
-                        </span>
-                        <span class="add_field text-success" t="name">
+                        </button>
+                        <button class="add_field btn btn-outline-success" t="name">
                            name
-                        </span>
-                        <span class="add_field text-success" t="phone">
+                        </button>
+                        <button class="add_field btn btn-outline-success" t="phone">
                            phone
-                        </span>
+                        </button>
+                        <button class="add_field btn btn-outline-success" t="text">
+                           text
+                        </button>
                     </nav>
                 </div>
                 <div class="form-check">

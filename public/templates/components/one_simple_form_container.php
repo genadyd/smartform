@@ -12,11 +12,11 @@
                               clear
                             </i>
                         </span>
-            <span class="simple_elements_open bg-info text-light">
-                            <i class="material-icons">
-                              keyboard_arrow_left
-                            </i>
-                        </span>
+<!--            <span class="simple_elements_open bg-info text-light">-->
+<!--                            <i class="material-icons">-->
+<!--                              keyboard_arrow_left-->
+<!--                            </i>-->
+<!--                        </span>-->
         </div>
     </nav>
     <div class="siple_wrapper_body">

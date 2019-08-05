@@ -79,11 +79,12 @@ class Controller {
            let container = $(this).closest('.one_questination'),
                crypt = container.attr('crypt'),
                name = container.find('.q_text').text();
-           $('.one_questination').removeClass('in_processing').removeClass('alert-success');
-           $(this).closest('.one_questination').addClass('in_processing').addClass('alert-success');
+           $('.one_questination').removeClass('in_processing').removeClass('alert-primary');
+           $(this).closest('.one_questination').addClass('in_processing').addClass('alert-primary');
            $('#form_processing_pop.edit_pop').removeClass('edit_pop').removeAttr('parent_answer');
            $('.form_processing_container').attr('form_crypt',crypt).find('.controls_bar .form_title').text(name)
-               .end().find('.add_quest.hidden').removeClass('hidden').end().find('.add_simple_form_button.hidden').removeClass('hidden');
+               .end().find('.add_simple_form_button.hidden').removeClass('hidden');
+
            let ajaxObject = {
                'func': 'getOneQuestion',
                'collBackFunction': that.view.insertFirstQuestionToPage,
@@ -157,7 +158,7 @@ class Controller {
 
     addQuestionAnswerPopOpenfirst(){
        $('.form_processing_container ').on('click', '.container_header .add_quest' , function () {
-           $('#form_processing_pop').attr('parent_answer',0);
+           $('#form_processing_pop').attr('parent_answer',0).removeClass('edit_pop').removeAttr('question_crypt');
        })
     }
     addQuestionAnswerPopOpenFromAnswer(){

@@ -46,6 +46,11 @@ $('#questinary_name').val('');
             else {
                 $('.form_processing_container_body').html(html);
             }
+            if($('.question_show_container .question_answer_box').length == 0){
+                $('.controls_bar .add_quest.hidden').removeClass('hidden');
+            }else{
+                $('.controls_bar .add_quest').addClass('hidden');
+            }
         }
        }
 
@@ -55,15 +60,31 @@ $('#questinary_name').val('');
     insertFirstQuestionToPage(html){
         $('.form_processing_container_body').html(html);
         $('.simple_forms_wrapper.hidden').removeClass('hidden')
+        if($('.question_show_container .question_answer_box').length == 0){
+            $('.controls_bar .add_quest.hidden').removeClass('hidden');
+        }else{
+            $('.controls_bar .add_quest').addClass('hidden');
+        }
     }
     deleteOneQuestionCollback(data ,that){
         let questionBodyContainer = that.closest('.one_answer_body'),
             controlButton = questionBodyContainer.closest('.one_answer_show_box').children('.one_answer_header').find('.one_answer_controls .open_close_question_box ');
-        controlButton.replaceWith(''+
-            '<span class="bg-warning text-white add_question" data-toggle="modal" data-target="#form_processing_pop">'+
-            '<i class="material-icons">add </i>'+
-            '</span>');
+        if(questionBodyContainer.length>0) {
+            controlButton.replaceWith('' +
+                '<span class="bg-warning text-white add_question" data-toggle="modal" data-target="#form_processing_pop">' +
+                '<i class="material-icons">add </i>' +
+                '</span>');
             questionBodyContainer.addClass('hidden').html('');
+        }else {
+            questionBodyContainer = that.closest('.form_processing_container_body');
+            questionBodyContainer.html('')
+        }
+
+        if($('.question_show_container .question_answer_box').length == 0){
+            $('.controls_bar .add_quest.hidden').removeClass('hidden');
+        }else{
+            $('.controls_bar .add_quest').addClass('hidden');
+        }
     }
     deleteOneQuestinnationCollback(data, that){
         that.closest('.one_questination').remove();
@@ -173,7 +194,7 @@ $('#questinary_name').val('');
             objectData = data.simple_array,
             checkBox = popContainer.find('input[type=checkbox]');
         if (objectData.up == 1) {
-            checkBox.attr('checked', 'checked');
+            checkBox.attr('checked',true);
         }
         else {
 
@@ -200,13 +221,15 @@ $('#questinary_name').val('');
         console.log(data);
        let popContainer = $('#simple_form_processing_pop'),
            formElements = data.fields,
-           oneSimleFormWrapper = $('.simple_forms_wrapper .one_simple_form_container[crypt='+data.simpleFormCrypt+']');
-        oneSimleFormWrapper.find('.simple_title').text(data.simpleFormTitle);
+           oneSimpleFormWrapper = $('.simple_forms_wrapper .one_simple_form_container[crypt='+data.simpleFormCrypt+']'),
+           curentFormContainerPosition = oneSimpleFormWrapper.attr('up');
+        oneSimpleFormWrapper.find('.simple_title').text(data.simpleFormTitle);
         popContainer.find('.modal-header .close').click();
+
         popContainer.removeAttr('simple_form_crypt');
         popContainer.find('.simple_form_processing_submit').removeClass('in_edit');
         $.each(formElements, function (key, val) {
-            let curentRow = oneSimleFormWrapper.find('.one_field[crypt='+key+']');
+            let curentRow = oneSimpleFormWrapper.find('.one_field[crypt='+key+']');
             if(curentRow.length>0) {
                 curentRow.find('.title_col').text(val.title)
                     .end()
@@ -220,10 +243,41 @@ $('#questinary_name').val('');
                     '            <td class="placeholder_col">'+val.placeholder+'</td>' +
                     '            <td class="value_col">'+val.value+'</td>' +
                     '        </tr>';
-                oneSimleFormWrapper.find('.simple_form_fields tbody').append(newRowHtml);
+                oneSimpleFormWrapper.find('.simple_form_fields tbody').append(newRowHtml);
             }
 
         })
+    //    change simple form box position ============================================
+        oneSimpleFormWrapper.attr('up',data.up );
+        let targetContainer = $('.bottom_wrapper');
+        if(curentFormContainerPosition == '0' && data.up == '1'){
+            targetContainer = $('.up_wrapper');
+        }
+            let clonedSimple = oneSimpleFormWrapper.clone();
+            oneSimpleFormWrapper.remove();
+            if(targetContainer.is('.el_hid')){
+                clonedSimple.addClass('hidden');
+            }else{
+                clonedSimple.removeClass('hidden');
+            }
+            if(targetContainer.is('.up_wrapper')){
+                targetContainer.find('.simple_forms_wrapper_body').append(clonedSimple);
+            }else {
+                targetContainer.find('.simple_forms_wrapper_body').prepend(clonedSimple);
+            }
+
+        let sortedElements = $('.simple_forms_wrapper').find('.one_simple_form_container'),
+            formsOrdersSaveObject = {},
+            counter = 1;
+        $.each(sortedElements, function (key, val) {
+            let el = $(this)
+            el.attr('form_order', counter);
+            formsOrdersSaveObject[el.attr('crypt')] = counter
+            counter++;
+        });
+        let model = new Model()
+        let ajaxObject = model.saveSimplesFormOrdersBuildObject(formsOrdersSaveObject);
+        model.sendAjax(ajaxObject);
     }
     simpleFormElementDelete(crypt){
         let popContainer = $('#simple_form_processing_pop'),

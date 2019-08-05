@@ -26,8 +26,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: solid 1px #eeeeee;
-      min-height: 5.3vh;
+      border: solid 1px #eeeeee;
+      border-radius: 4px;
+      min-height: 4.3vh;
+      padding-right: 5px;
+      margin-bottom: 4px;
 .q_text{
   cursor: pointer;
 }

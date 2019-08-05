@@ -10,6 +10,9 @@
     <li class="nav-item">
         <a class="nav-link active text-light" data-toggle="pill" href="#home">Home</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link text-light"  href="/user_answers">Answers</a>
+    </li>
 </ul>
 <div class="container-fluid">
     <div class="tab-content">
