@@ -291,5 +291,8 @@ $('#questinary_name').val('');
         let simpleFormContainer = $('.one_simple_form_container[crypt='+crypt+']');
         simpleFormContainer.remove();
     }
+    byPhoneSearchResShow(data){
+       $('.sessions_list_container').html(data);
+    }
 
 }

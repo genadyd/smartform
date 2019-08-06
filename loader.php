@@ -10,4 +10,5 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/public/template
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/public/templates/components');
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/controllers');
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/models');
+set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/');
 

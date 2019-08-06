@@ -31,6 +31,9 @@ class Controller {
         this.simpleFormDelete();
         this.simplesSortable();
         this.hideShowSimpleForms();
+        this.searchAnswetsByUserPhone();
+        this.getAllSessions();
+        this.getSessionsByDatesRange(this);
     }
     questinationNameNewEnable(){
         $('.left_panel ').on('click','.add_new:not(.hidden)',function () {
@@ -404,6 +407,52 @@ $('#simple_form_processing_pop').on('click', '.add_field',function(){
             $(this).removeClass('vis').find('i.material-icons').text('visibility_off')
         })
     }
+    searchAnswetsByUserPhone(){
+        let that = this;
+        $('body').on('click','.by_phone_search_box .by_phone_search_submit',function () {
+            let searchByPhoneButton = $(this),
+                phoneNum = searchByPhoneButton.closest('.by_phone_search_box').find('input').val()||'',
+            ajaxObject = {
+                'func': 'GetByPhoneSearch',
+                'collBackFunction': that.view.byPhoneSearchResShow ,
+                'searchPhoneNum': phoneNum,
+                'dataType':'html'
+            }
+            that.model.sendAjax(ajaxObject);
+        })
+    }
+    getAllSessions(){
+        let that = this;
+        $('body').on('click','.get_all_button_box .get_all_button',function () {
+            let searchByPhoneButton = $(this),
+                phoneNum = searchByPhoneButton.closest('.by_phone_search_box').find('input').val()||'',
+                ajaxObject = {
+                    'func': 'GetAllSessions',
+                    'collBackFunction': that.view.byPhoneSearchResShow ,
+                    'dataType':'html'
+                }
+            that.model.sendAjax(ajaxObject);
+        })
+    }
+    getSessionsByDatesRange(obj){
+        // let that = this;
+        $('body').on('click','.by_date_search_box .search_submit',function () {
+        let datesSearchContainer = $(this).closest('.by_date_search_box'),
+            fromDateVal = datesSearchContainer.find('.from_date_container #from_date_search').val(),
+            toDateVal = datesSearchContainer.find('.to_date_container #to_date_search').val(),
+            ajaxObject = {
+                'func': 'getSessionsByDatesRange',
+                'collBackFunction': obj.view.byPhoneSearchResShow ,
+                'range':{
+                    'fromDate':fromDateVal,
+                    'toDate':toDateVal
+                },
+                'dataType':'html'
+            };
+            obj.model.sendAjax(ajaxObject);
+        });
+    }
+
 }
 
 // let controller = new Controller();

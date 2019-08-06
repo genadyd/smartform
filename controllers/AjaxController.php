@@ -10,8 +10,15 @@ class AjaxController
 {
     public function __construct()
     {
-        require_once 'FormsModel.php';
-        $this->forms_model = new FormsModel();
+
+
+        if(strpos($_SERVER['REQUEST_URI'],'user_answers')!== false){
+            require_once 'AnswersModel.php';
+            $this->ans_model = new AnswersModel();
+        }else{
+            require_once 'FormsModel.php';
+            $this->forms_model = new FormsModel();
+        }
     }
 
     public function indexAction()
@@ -132,6 +139,40 @@ class AjaxController
     }
     private function simpleFormOrdersSave($data){
         $this->forms_model->simpleFormOrdersSave($data['ordersObject']);
+    }
+    private function GetByPhoneSearch($data){
+        $phone_num = $data['searchPhoneNum'];
+        $all_answers_up = $this->ans_model->GetSimpleByPhoneSearch($phone_num);
+        $smart_res = $this->ans_model->GetSmartByPhoneSearch($phone_num);
+        foreach ($smart_res as $key => $val){
+            $all_answers_up[$key]['smart_answers'] = $val['answers'];
+        }
+        ob_start();
+        require_once 'simple_answers_table.php';
+        ob_flush();
+    }
+    private function GetAllSessions(){
+        $all_answers_up = $this->ans_model->getAllUserAnswers(); /*get simple forms UP = 1*/
+        $smart_ansvers = $this->ans_model->getSmartFormAnswers();
+        foreach ($smart_ansvers as $key => $val){
+            $all_answers_up[$key]['smart_answers'] = $val['answers'];
+        }
+        ob_start();
+        require_once 'simple_answers_table.php';
+        ob_flush();
+    }
+    private function getSessionsByDatesRange($data){
+//        return var_dump($data);
+        $from_date = $data['range']['fromDate'];
+        $to_date = $data['range']['toDate'];
+        $all_answers_up = $this->ans_model->GetSimpleByDatesRange($from_date, $to_date);
+        $smart_ansvers = $this->ans_model->GetSmartByDateRange($from_date, $to_date);
+        foreach ($smart_ansvers as $key => $val){
+            $all_answers_up[$key]['smart_answers'] = $val['answers'];
+        }
+        ob_start();
+        require_once 'simple_answers_table.php';
+        ob_flush();
     }
 
 

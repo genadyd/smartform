@@ -14,7 +14,7 @@ class DbQ
     }
 
     public function getConnection(){
-      require_once 'smartform/config.php';
+      require 'smartform/config.php';
       $connect = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
         $connect->exec("set names utf8");
 //      $connect = 'ggggg';

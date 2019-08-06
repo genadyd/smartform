@@ -135,5 +135,27 @@ body {
         font-size: 1vw;
         margin: 0 1vw;
         cursor: pointer; }
+    body .page_container .search_container .search_processing_wrapper .search_container_body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end; }
+      body .page_container .search_container .search_processing_wrapper .search_container_body .by_date_search_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end; }
+        body .page_container .search_container .search_processing_wrapper .search_container_body .by_date_search_box .from_date_container, body .page_container .search_container .search_processing_wrapper .search_container_body .by_date_search_box .to_date_container {
+          margin-left: 10px; }
+        body .page_container .search_container .search_processing_wrapper .search_container_body .by_date_search_box .search_submit {
+          height: 38px; }
+      body .page_container .search_container .search_processing_wrapper .search_container_body .by_phone_search_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end; }
+        body .page_container .search_container .search_processing_wrapper .search_container_body .by_phone_search_box .by_phone_search_submit {
+          height: 38px; }
+        body .page_container .search_container .search_processing_wrapper .search_container_body .by_phone_search_box .by_phone_search_container {
+          margin-left: 10px; }
+    body .page_container .sessions_list_container .session_container table td, body .page_container .sessions_list_container .session_container table th {
+      width: 50%; }
 
 /*# sourceMappingURL=home.css.map */

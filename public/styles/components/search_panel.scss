@@ -1,0 +1,32 @@
+.search_container {
+  .search_processing_wrapper {
+    .search_container_body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      .by_date_search_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .from_date_container, .to_date_container {
+          margin-left: 10px;
+        }
+        .search_submit {
+          height: 38px;
+        }
+      }
+      .by_phone_search_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .by_phone_search_submit {
+          height: 38px;
+        }
+        .by_phone_search_container{
+margin-left: 10px;
+        }
+      }
+    }
+
+  }
+}
