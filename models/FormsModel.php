@@ -54,19 +54,25 @@ class FormsModel
         return $res;
     }
     public function formProcessingSave($object){
+//        Max Order ===========================
+        $max_query = "SELECT MAX(questions_order)+1 AS m_o FROM questions";
+        $m_st = $this->_db->query($max_query);
+        $res = $m_st->fetch(PDO::FETCH_ASSOC);
+        $new_order = $res['m_o'];
         $crypt = md5(microtime());
         $ct = date('Y-m-d H:i:s', time());
         $object['questionCrypt'] = $crypt;
         $question_name = $object['questionName'];
         $form_crypt = $object['formCrypt'];
         $ans_crypt = $object['answerCrypt'];
-        $question_save_query = "INSERT INTO questions (crypt, value, form_crypt, answer_crypt, CT, UT)
-        VALUES (:CRYPT, :VALUE, :FORM_CRYPT, :ANSWER_CRYPT, :CT, :UT)";
+        $question_save_query = "INSERT INTO questions (crypt, value, form_crypt, answer_crypt, questions_order, CT, UT)
+        VALUES (:CRYPT, :VALUE, :FORM_CRYPT, :ANSWER_CRYPT, :ORD, :CT, :UT)";
         $st = $this->_db->prepare($question_save_query);
         $st->bindParam(':CRYPT',$crypt);
         $st->bindParam(':VALUE',$question_name);
         $st->bindParam(':FORM_CRYPT',$form_crypt);
         $st->bindParam(':ANSWER_CRYPT',$ans_crypt);
+        $st->bindParam(':ORD',$new_order);
         $st->bindParam(':CT',$ct);
         $st->bindParam(':UT',$ct);
         $st->execute();
